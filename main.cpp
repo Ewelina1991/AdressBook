@@ -1,6 +1,6 @@
 #include <iostream>
-#include <windows.h> // zeby system("cls") dzialal
-#include <fstream> //biblioteka odpowiedzialna za operacje plikowe
+#include <windows.h>
+#include <fstream>
 
 using namespace std;
 
@@ -11,7 +11,7 @@ struct Person {
 
 int AddPerson(Person people[], int numberOfPeople) {
     string name, lastName, phoneNumber, email, address;
-    // Pobieram dane nowej osoby
+
     system("cls");
     cout << "Dodawanie osoby" << endl;
     cout << "Podaj imie uzytkownika: ";
@@ -19,18 +19,16 @@ int AddPerson(Person people[], int numberOfPeople) {
     cout << "Podaj nazwisko uzytkownika: ";
     cin >> lastName;
     cout << "Podaj numer telefonu uzytkownika: ";
-    cin.sync(); // oprozniam bufor
-    getline(cin, phoneNumber); // wczytuje razem ze spacja
+    cin.sync();
+    getline(cin, phoneNumber);
     cout << "Podaj email uzytkownika: ";
     cin >> email;
     cout << "Podaj address uzytkownika: ";
     cin.sync();
     getline(cin, address);
 
-    // ustalam id osoby
     int PersonId = numberOfPeople+ 1;
 
-    // dodaje osobe do tablicy
     people[numberOfPeople].id = PersonId;
     people[numberOfPeople].name = name;
     people[numberOfPeople].lastName = lastName;
@@ -38,7 +36,6 @@ int AddPerson(Person people[], int numberOfPeople) {
     people[numberOfPeople].email = email;
     people[numberOfPeople].address = address;
 
-    // dodaje osobe do pliku
     fstream file;
     file.open("AddressBook.txt", ios::out | ios::app);
     if (file.good() == true) {
